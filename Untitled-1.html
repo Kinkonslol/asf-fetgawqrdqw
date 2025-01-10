@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prosty kalkulator</title>
+    <script>
+        function oblicz() {
+            var liczba1 = parseFloat(document.getElementById("liczba1").value);
+            var liczba2 = parseFloat(document.getElementById("liczba2").value);
+            var wynik;
+            var operacja = document.querySelector('input[name="operacja"]:checked').value;
+            
+            if (operacja === "dodawanie") {
+                wynik = liczba1 + liczba2;
+            } else if (operacja === "odejmowanie") {
+                wynik = liczba1 - liczba2;
+            } else if (operacja === "mnożenie") {
+                wynik = liczba1 * liczba2;
+            } else if (operacja === "dzielenie") {
+                if (liczba2 !== 0) {
+                    wynik = liczba1 / liczba2;
+                } else {
+                    wynik = "Błąd: Dzielenie przez zero!";
+                }
+            }
+            document.getElementById("wynik").innerHTML = "Wynik: " + wynik;
+        }
+    </script>
+</head>
+<body>
+    <h1>Prosty Kalkulator</h1>
+    
+    <label for="liczba1">Podaj pierwszą liczbę:</label>
+    <input type="number" id="liczba1" required><br><br>
+    
+    <label for="liczba2">Podaj drugą liczbę:</label>
+    <input type="number" id="liczba2" required><br><br>
+    
+    <h3>Wybierz operację:</h3>
+    <input type="radio" id="dodawanie" name="operacja" value="dodawanie">
+    <label for="dodawanie">Dodawanie</label><br>
+    
+    <input type="radio" id="odejmowanie" name="operacja" value="odejmowanie">
+    <label for="odejmowanie">Odejmowanie</label><br>
+    
+    <input type="radio" id="mnożenie" name="operacja" value="mnożenie">
+    <label for="mnożenie">Mnożenie</label><br>
+    
+    <input type="radio" id="dzielenie" name="operacja" value="dzielenie">
+    <label for="dzielenie">Dzielenie</label><br><br>
+    
+    <button onclick="oblicz()">Oblicz</button>
+    
+    <h3 id="wynik"></h3>
+</body>
+</html>
